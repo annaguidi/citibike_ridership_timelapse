@@ -3,7 +3,7 @@ A look at how citibike ridership evolved post-coronavirus in march of 2020
 
 ## Context & Description of Project:
 
-Somewhere between the second and third week of March 2020, the spread of covid-19 in New York City became increasingly apparent, causing, among other effects, people to stay home and work remotely, and subway ridership to decrease by up to [92%] (https://brooklyneagle.com/articles/2020/04/08/new-york-city-subway-ridership-down-92-percent-due-to-coronavirus/) in an effort to social distance.
+Somewhere between the second and third week of March 2020, the spread of covid-19 in New York City became increasingly apparent, causing, among other effects, people to stay home and work remotely, and subway ridership to decrease by up to [92%](https://brooklyneagle.com/articles/2020/04/08/new-york-city-subway-ridership-down-92-percent-due-to-coronavirus/) in an effort to social distance.
 
 The goal of this project is to analyze the March Citibike dataset, to see if and where there has been a decrease (or perhaps increase) in ridership, and find an effective way to visualize these changes within the month.
 
@@ -35,7 +35,7 @@ And with that, we are done with the data processing! In hindsight could have don
 
 In my personal experience, it's better to do some "boring", simple data analysis and visualizations before jumping into something more detailed and mapping out the data. So I created a simple line graph showing total ridership, across ALL stations, for each day of the month of March, 2020. You can see a peak on March 9th, and then a big decline after the 14th. Something definitely happened:
 
-[]()image stuffs
+[]()
 
 Based on the above graph, I loosely defined everything pre-March 15th as before the effects of covid19 fully hit NYC. If you think about it, on [March 9th, there were still only 16 confirmed cases of coronavirus, and by March 25th, there were 17,800](https://en.wikipedia.org/wiki/COVID-19_pandemic_in_New_York_City). Somewhere in the middle is March 14th.
 
