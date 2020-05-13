@@ -35,41 +35,41 @@ And with that, we are done with the data processing! In hindsight could have don
 
 In my personal experience, it's better to do some "boring", simple data analysis and visualizations before jumping into something more detailed and mapping out the data. So I created a simple line graph showing total ridership, across ALL stations, for each day of the month of March, 2020. You can see a peak on March 9th, and then a big decline after the 14th. Something definitely happened:
 
-[]()
+![img3](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/newplot%20(2).png)
 
 Based on the above graph, I loosely defined everything pre-March 15th as before the effects of covid19 fully hit NYC. If you think about it, on [March 9th, there were still only 16 confirmed cases of coronavirus, and by March 25th, there were 17,800](https://en.wikipedia.org/wiki/COVID-19_pandemic_in_New_York_City). Somewhere in the middle is March 14th.
 
 With that in mind, I plotted total ridership activity of the first week of the month vs. the last week of the month:
 
-[]()image stuffs2
+![image2](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/newplot%20(3).png)
 
 Yeah, there is a difference, but looking back at the [weather of those 2 weeks](https://www.accuweather.com/en/us/new-york/10007/march-weather/349727), I realized this comparison did not make any sense, as I was comparing cold to warm days, which must have indubiously had a big effect (sorry for the poor visualization- the icons at the bottom symbolize whether it was a cold or warm day for the 4th week of March, the icons on the top symbolize the weather for the first week):
 
-[]() image stuffs3.
+
 
 We are clearly not comapring apples to apples, and because March is a notoriously heterogneous month in terms of weather, I just decided to write a function to compare various days to each other that matched in weekday and temperature.
 
 2 cold (5C-11C) Thursdays with almost identical weather:
 
-[]() image stuffs3.
+![img4](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/newplot%20(4).png)
 
 pretty big difference, especially in morning commuter bump, but the slope duing non-commute hours looks almost identical
 
 2 warm (7C-21C) Fridays:
 
-[] () image
+![img5](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/newplot%20(5).png)
 
 like thursday, the slopes look very similar. The morning commute bump is already waning on March 13th, either because it's a Friday, or because the effect of coronavirus is already affecting Citibike activity. Again, we see how morning commute spike is affected more than evening commute spike.
 
 2 Saturdays- this time the Post-Corona Saturday is warmer than the pre-Corona one
 
-[] () image
+![img6](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/newplot%20(6).png)
 
 The 21st is significantly warmer than the 14th (18C vs 14C), and yet ridership is lower, but follows similar patterns, so it's almost certain to say that due to covid-19, fewer riders are using citibikes.
 
 Comparing 3 consecutive Wednesdays of almost identical temperature
 
-[] () image
+![img7](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/newplot%20(7).png)
 
 this comparison is very insightful, because the constant of temperature is held the same, and we do see a really big drop in ridership on the third week of March. The decline is most evident during the morning commute.
 
