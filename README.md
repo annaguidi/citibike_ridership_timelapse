@@ -3,7 +3,7 @@ A look at how citibike ridership evolved post-coronavirus in march of 2020
 
 ## Context & Description of Project:
 
-Somewhere between the second and third week of March 2020, the spread of covid-19 in New York City became increasingly apparent, causing, among other effects, people to stay home and work remotely, and subway ridership to decrease by up to [92%](https://brooklyneagle.com/articles/2020/04/08/new-york-city-subway-ridership-down-92-percent-due-to-coronavirus/) in an effort to social distance.
+Somewhere between the second and third week of March 2020, the spread of covid-19 in New York City became increasingly apparent, causing, among other effects, people to stay home and work remotely. Subway ridership decreased by up to [92%](https://brooklyneagle.com/articles/2020/04/08/new-york-city-subway-ridership-down-92-percent-due-to-coronavirus/) in an effort to social distance.
 
 The goal of this project is to analyze the March Citibike dataset, to see if and where there has been a decrease (or perhaps increase) in ridership, and find an effective way to visualize these changes within the month.
 
@@ -18,22 +18,22 @@ The goal of this project is to analyze the March Citibike dataset, to see if and
 Citibike data can be found [here](https://s3.amazonaws.com/tripdata/index.html)
 I used the [March 2020 dataset](https://s3.amazonaws.com/tripdata/202003-citibike-tripdata.csv.zip).
 
-Initially, I was not sure whether I would end up visualizing differences in ridership by hour or by day, so after transforming the starttime and stoptime of each ride to a datetimestamp using `.to_datetime`, I create 4 new columns (start_hour, start_day, end_hour, end_day).
+Initially, I was not sure whether I would end up visualizing differences in ridership by hour or by day, so after transforming the starttime and stoptime of each ride to a datetimestamp using `.to_datetime`, I created 4 new columns (start_hour, start_day, end_hour, end_day).
 
-I have used this dataset before, and know from previous QA (see my other citibike repos), that it is a high quality dataset- so while my QA in this repo is not as extensive as it could be, I still check that each citibike station has only 1 lat/long associated with it. I then create 2 dataframes- one where I sum the number of rides across each Start Station by hour and day (number_pickups), and a second dataframe where I do the same for total dropoffs (number_dropoffs). We now know the number of total pickups and dropoffs for every station for every hour and day in the month of March 2020.
+I have used this dataset before, and know from previous QA (see my other citibike repos), that it is a high quality dataset- so while my QA in this repo is not as extensive as it could be, I still checked that each citibike station has only 1 lat/long associated with it. I then created 2 dataframes- one where I sum the number of rides across each Start Station by hour and day (number_pickups), and a second dataframe where I do the same for total dropoffs (number_dropoffs). We now know the number of total pickups and dropoffs for every station for every hour and day in the month of March 2020.
 
-However, I am interested in the total activity, so I then do an outer join on the datasets (which I QA), fill missing values with 0s, and create a new column, `activity`, which is just a sum of the `pickups` and `dropoffs` columns, as well as a `net_pickups` column, which is pickups - dropoffs. I never ended up using this last column, but might in the future.
+I was interested in the total activity, so in the code I then do an outer join on the datasets (which I QA), fill missing values with 0s, and create a new column, `activity`, which is just a sum of the `pickups` and `dropoffs` columns, as well as a `net_pickups` column, which is pickups - dropoffs. I never ended up using this last column, but might in the future.
 
 Now for some geoprocessing:
-* I make a `geometry` column by creating Points out of the station latitudes and longitudes using the `Shapely` library
-* Initialize the crs
-* Then change the crs to to `espg = 2263`
+* I made a `geometry` column by creating Points out of the station latitudes and longitudes using the `Shapely` library
+* Initialized the crs
+* Then changed the crs to to `espg = 2263`
 
-And with that, we are done with the data processing! In hindsight could have done more QA, but let's continue.
+And with that, we are done with the data processing! In hindsight, I could have done more QA, but let's continue.
 
 ### 2. Initial Data Analysis
 
-In my personal experience, it's better to do some "boring", simple data analysis and visualizations before jumping into something more detailed and mapping out the data. So I created a simple line graph showing total ridership, across ALL stations, for each day of the month of March, 2020. You can see a peak on March 9th, and then a big decline after the 14th. Something definitely happened:
+In my personal experience, it's better to do some simple data analysis and visualizations before jumping into something more detailed and mapping out the data. So I created a simple line graph showing total ridership, across ALL stations, for each day of the month of March, 2020. You can see a peak on March 9th, and then a big decline after the 14th. Something definitely happened:
 
 ![img3](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/newplot%20(2).png)
 
