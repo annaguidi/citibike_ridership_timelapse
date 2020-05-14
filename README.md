@@ -89,9 +89,9 @@ So now we know that there are differences in citibike activity pre- and post-Cov
 
 Using matplotlib, I plotted 2 days (one pre- and post-covid) against each other, making sure they were both on the same weekday, adn holding the hour of day constant. Here are some examples:
 
-[] () image
-[] () image
-[] () image
+![img8](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/mpl5122612.png)
+![img9](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/mpl13172717.png)
+![img10](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/mpl14152115.png)
 
 Right off the bat, midtown and FiDi citbike docks seem to have the biggest decrease in activity, more so in certain hours (at first glance, difference at 5pm > difference at 3 pm).
 
@@ -105,29 +105,29 @@ I did have to do a little more data work: I in order to get the difference in ac
 
 In my first attempt to convey difference in ridership, I used percent_activity and pass it into the 'opacities' argument of scatter_mapbox, so that we still see a bigger circle for busy citibike docks, but if docks are seeing less traffic than usual, they are more transparent, like a shadow of their former selves (note: if there is more activity on March 19th than March 15th, you have to floor it to 1, or 100%, or it won't work).
 
-[] () image
+![img11](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/newplot.png)
 
 This is not great, because when transparent markers overlap, they look more opaque, plus if activity was = 0 in the post-corona day, but not in the pre-corona day, there is no way to visualize that.
 
 Attempt 2 consisted of experimenting with color scales instead of opacity, so again, the radius will just convey how popular a citibike dock is given the 24 hours and other docks for a given day (in our case, March 19th), but the color scale conveys how activity measures up ot pre-coronavirus March 5th. For the first attempt, I just used activity_difference as input for the color scale:
 
-[] () image
+![vid12](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/Screen%20Recording%202020-05-14%20at%2011.10.27%20PM.mov)
 
 The legend and color scale will completely change from day to day unless you set a `range_color=[min_val,max_val]`. This was also difficult, because I think the animation is easiest to comprehend when the midpoint is 0 and you have different colors above or below that (you can set `color_continuous_midpoint`, which is super helfpul), but the difference in activity was so skewed towards negative (far fewer rides than usual as opposed to more, which happened so rarely), AND changes from hour to hour drastically. In hindsight, I should have normalized this data column to have a mean of 0 for each hour. Food for thought!
 
 I played around with more colorschemes:
 
-[] () image
+![img13](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/newplot%20(1).png)
 
 Obviously Midtown, FiDi are most affected, and these differences phase out the further away we move out. The outlying citibike stations' activity seem barely affected at all.
 
 Here I switch to using percents instead of number difference again, and I think it's my favourite and maybe the easiest way to comprehend the changes between ridership in the 2 days we are comparing:
 
-[] () image
+![video14](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/Screen%20Recording%202020-05-14%20at%2011.11.41%20PM.mov)
 
 For my last tweak or attempt, I used discrete colors, instead of a color scale, to show whether a citibike dock was underutilized ( < 75% activity), about the same ( 75% <= activity <= 1.25%), or more activity than usual ( > 1.25%).
 
-[] () image
+![img15](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/newplot_final.png)
 
 I will let you decide which of these you like best.
 
