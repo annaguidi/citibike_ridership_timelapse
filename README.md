@@ -45,7 +45,7 @@ With that in mind, I plotted total ridership activity of the first week of the m
 
 Yeah, there is a difference, but looking back at the [weather of those 2 weeks](https://www.accuweather.com/en/us/new-york/10007/march-weather/349727), I realized this comparison did not make any sense, as I was comparing cold to warm days, which must have indubiously had a big effect (sorry for the poor visualization- the icons at the bottom symbolize whether it was a cold or warm day for the 4th week of March, the icons on the top symbolize the weather for the first week):
 
-
+![img3](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/days_and_weather.png)
 
 We are clearly not comapring apples to apples, and because March is a notoriously heterogneous month in terms of weather, I just decided to write a function to compare various days to each other that matched in weekday and temperature.
 
@@ -111,7 +111,7 @@ This is not great, because when transparent markers overlap, they look more opaq
 
 Attempt 2 consisted of experimenting with color scales instead of opacity, so again, the radius will just convey how popular a citibike dock is given the 24 hours and other docks for a given day (in our case, March 19th), but the color scale conveys how activity measures up ot pre-coronavirus March 5th. For the first attempt, I just used activity_difference as input for the color scale:
 
-![vid12](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/Screen%20Recording%202020-05-14%20at%2011.10.27%20PM.mov)
+![img12](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/Screen-Recording-2020-05-14-at-11.10.27-PM.gif)
 
 The legend and color scale will completely change from day to day unless you set a `range_color=[min_val,max_val]`. This was also difficult, because I think the animation is easiest to comprehend when the midpoint is 0 and you have different colors above or below that (you can set `color_continuous_midpoint`, which is super helfpul), but the difference in activity was so skewed towards negative (far fewer rides than usual as opposed to more, which happened so rarely), AND changes from hour to hour drastically. In hindsight, I should have normalized this data column to have a mean of 0 for each hour. Food for thought!
 
@@ -123,7 +123,7 @@ Obviously Midtown, FiDi are most affected, and these differences phase out the f
 
 Here I switch to using percents instead of number difference again, and I think it's my favourite and maybe the easiest way to comprehend the changes between ridership in the 2 days we are comparing:
 
-![video14](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/Screen%20Recording%202020-05-14%20at%2011.11.41%20PM.mov)
+![video14](https://github.com/annaguidi/citibike_ridership_timelapse/blob/master/pics/Screen-Recording-2020-05-14-at-11.11.41-PM.gif)
 
 For my last tweak or attempt, I used discrete colors, instead of a color scale, to show whether a citibike dock was underutilized ( < 75% activity), about the same ( 75% <= activity <= 1.25%), or more activity than usual ( > 1.25%).
 
