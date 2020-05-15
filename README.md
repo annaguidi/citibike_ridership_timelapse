@@ -27,7 +27,7 @@ I was interested in the total activity, so in the code I then do an outer join o
 Now for some geoprocessing:
 * I made a `geometry` column by creating Points out of the station latitudes and longitudes using the `Shapely` library
 * Initialized the crs
-* Then changed the crs to to `espg = 2263`
+* Then changed the crs to `espg = 2263`
 
 And with that, we are done with the data processing! In hindsight, I could have done more QA, but let's continue.
 
